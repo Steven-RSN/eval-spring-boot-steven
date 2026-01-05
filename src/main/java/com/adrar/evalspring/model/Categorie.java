@@ -1,5 +1,6 @@
 package com.adrar.evalspring.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
@@ -20,6 +21,7 @@ public class Categorie {
 
     // Relation OneToMany avec Produit
     @OneToMany(mappedBy = "categorie")
+    @JsonManagedReference
     private List<Produit> produits;
 
     // Getters et Setters

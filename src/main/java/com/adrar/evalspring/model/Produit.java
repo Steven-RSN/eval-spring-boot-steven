@@ -1,5 +1,7 @@
 package com.adrar.evalspring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,9 +25,9 @@ public class Produit {
     @Column(nullable = false)
     private Double prix;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
     @JoinColumn(name = "categorie_id", nullable = false)
-    @NotNull(message = "La catégorie est obligatoire")
     private Categorie categorie;
 
     // Getters et Setters
