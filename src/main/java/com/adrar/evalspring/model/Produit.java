@@ -19,12 +19,23 @@ public class Produit {
     private String nom;
 
     @NotNull(message = "Le prix est obligatoire")
-    @Positive(message = "Le prix doit être pos")
+    @Positive(message = "Le prix doit être positif")
     @Column(nullable = false)
     private Double prix;
 
+    @ManyToOne
+    @JoinColumn(name = "categorie_id", nullable = false)
+    @NotNull(message = "La catégorie est obligatoire")
+    private Categorie categorie;
 
     // Getters et Setters
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
     public Long getId() {
         return id;
     }
